@@ -5,7 +5,7 @@ DATAMODEL_DIR=datamodel
 EXTENSION_DIR=extension_qgep_sige
 REGEN_PROD_DB=true
 REGEN_COMP_DB=true
-CHECK_DELTA_ONLY=false # TODO CHECK MD5 values only
+CHECK_DELTA_ONLY=false # TODO: CHECK MD5 values only
 TXT_LOG_MODE=true # Outputs a txt file log from PUM. Set to false for upgrade in order to interact with the prompt yes/no
 
 # Disconnect users to free databases
@@ -72,7 +72,7 @@ pushd  $DATAMODEL_DIR
 if $TXT_LOG_MODE
 then
   # here it wont upgrade anyway (prompt from user not available)
-  pum test-and-upgrade -pp pum_qgep_prod -pt pum_qgep_test -pc pum_qgep_comp -t qgep_sys.pum_info -f qgep_prod_1_4_0.dump -d delta/ -i constraints views indexes -N public -N usr_cartoriviera -N qgep_sige --exclude-field-pattern 'usr_%' -v int SRID 2056 -x > ../logs/pum_log_qgep_$(date +"%Y_%m_%d_%H_%M").txt
+  pum test-and-upgrade -pp pum_qgep_prod -pt pum_qgep_test -pc pum_qgep_comp -t qgep_sys.pum_info -f qgep_prod_1_4_0.dump -d delta/ -i constraints views indexes -N public -N usr_cartoriviera -N qgep_sige --exclude-field-pattern 'usr_%' -v int SRID 2056 -x > ../pum_logs/pum_log_qgep_$(date +"%Y_%m_%d_%H_%M").txt
 else
   # here PUM will prompt the user to enter y or n to upgrade
   pum test-and-upgrade -pp pum_qgep_prod -pt pum_qgep_test -pc pum_qgep_comp -t qgep_sys.pum_info -f qgep_1_4_0.dump -d delta/ -i constraints views indexes columns sequences triggers functions -N public -N usr_cartoriviera -N qgep_sige --exclude-field-pattern 'usr_%' -v int SRID 2056 -x
