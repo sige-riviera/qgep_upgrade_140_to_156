@@ -75,7 +75,7 @@ then
   pum test-and-upgrade -pp pum_qgep_prod -pt pum_qgep_test -pc pum_qgep_comp -t qgep_sys.pum_info -f qgep_prod_1_4_0.dump -d delta/ -i constraints views indexes -N public -N usr_cartoriviera -N qgep_sige --exclude-field-pattern 'usr_%' -v int SRID 2056 -x > ../pum_logs/pum_log_qgep_$(date +"%Y_%m_%d_%H_%M").txt
 else
   # here PUM will prompt the user to enter y or n to upgrade
-  pum test-and-upgrade -pp pum_qgep_prod -pt pum_qgep_test -pc pum_qgep_comp -t qgep_sys.pum_info -f qgep_1_4_0.dump -d delta/ -i constraints views indexes columns sequences triggers functions -N public -N usr_cartoriviera -N qgep_sige --exclude-field-pattern 'usr_%' -v int SRID 2056 -x
+  pum test-and-upgrade -pp pum_qgep_prod -pt pum_qgep_test -pc pum_qgep_comp -t qgep_sys.pum_info -f qgep_prod_1_4_0.dump -d delta/ -i constraints views indexes columns sequences triggers functions -N public -N usr_cartoriviera -N qgep_sige --exclude-field-pattern 'usr_%' -v int SRID 2056 -x
 fi
 popd
 
