@@ -6,9 +6,9 @@ EXTENSION_DIR=extension_qgep_sige
 REGEN_PROD_DB=true
 REGEN_COMP_DB=true
 CHECK_DELTA_ONLY=false # TODO: CHECK MD5 values only
-TXT_LOG_MODE=true # Outputs a txt file log from PUM. Set to false for upgrade in order to interact with the prompt yes/no
+TXT_LOG_MODE=true # outputs a txt file log from PUM. Set to false for upgrade in order to interact with the prompt yes/no
 
-# Disconnect users to free databases
+# Disconnect users to free databases (before that manually create a copy of prod db named qgep_prod_copy)
 psql -d postgres -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'qgep_prod_copy';"
 psql -d postgres -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'pum_qgep_prod';"
 psql -d postgres -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'pum_qgep_comp';"
@@ -47,9 +47,9 @@ popd
 # Fix sige customisations syntaxes
 if $REGEN_PROD_DB
 then
-  psql -U sige -d pum_qgep_prod -c "ALTER TABLE qgep_od.reach RENAME sige_batch_cleaning_id TO usr_batch_cleaning_id;" # Do not forget to upgrade qgis project accordingly
-  psql -U sige -d pum_qgep_prod -c "ALTER TABLE qgep_od.reach RENAME sige_batch_inspection_id TO usr_batch_inspection_id;" # Do not forget to upgrade qgis project accordingly
-  psql -U sige -d pum_qgep_prod -c "ALTER TABLE qgep_od.reach RENAME sige_collecting_pipe_id TO usr_collecting_pipe_id;" # Do not forget to upgrade qgis project accordingly
+  psql -U sige -d pum_qgep_prod -c "ALTER TABLE qgep_od.reach RENAME sige_batch_cleaning_id TO usr_batch_cleaning_id;" # do not forget to upgrade qgis project accordingly
+  psql -U sige -d pum_qgep_prod -c "ALTER TABLE qgep_od.reach RENAME sige_batch_inspection_id TO usr_batch_inspection_id;" # do not forget to upgrade qgis project accordingly
+  psql -U sige -d pum_qgep_prod -c "ALTER TABLE qgep_od.reach RENAME sige_collecting_pipe_id TO usr_collecting_pipe_id;" # do not forget to upgrade qgis project accordingly
 fi
 
 # Set or reset test db
