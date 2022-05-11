@@ -19,25 +19,31 @@ See [qwat_upgrade_133_to_137 repository](https://github.com/sige-riviera/qwat_up
 
 ### Create a duplicate of production database to then avoid disconnecting users during upgrade tests
 `psql -d postgres -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'qgep_prod';"`
+
 `psql -U sige -d postgres -c "CREATE DATABASE qgep_prod_copy WITH TEMPLATE qgep_prod;"`
 
 ### Check deltas from upgrades table
 Edit sige_qgep_upgrade.sh script by setting CHECK_DELTA_ONLY=true then execute it:
-. sige_upgrade_qgep.sh
+
+`. sige_upgrade_qgep.sh`
 
 ### Lauch sige_qgep_upgrade.sh to analyse pum logs outputs
 Edit sige_qgep_upgrade.sh script by setting CHECK_DELTA_ONLY=true, TXT_LOG_MODE=true then execute it:
-. sige_upgrade_qgep.sh
+
+`. sige_upgrade_qgep.sh`
 
 ### Lauch sige_qgep_upgrade.sh to upgrade pum_log_prod database
 Edit sige_qgep_upgrade.sh script by setting CHECK_DELTA_ONLY=true, TXT_LOG_MODE=false then execute it:
-. sige_upgrade_qgep.sh
+
+`. sige_upgrade_qgep.sh`
 
 At some point, the script should ask the user to apply deltas to pum_qwat_prod. Type in y or yes to proceed.
 
 ### Go to production and create an archive of old database version
 `psql -U sige -d postgres -c "ALTER DATABASE qgep_prod RENAME TO qgep_prod_v140_20220510;"`
+
 `psql -U sige -d postgres -c "CREATE DATABASE qgep_prod WITH TEMPLATE pum_qgep_prod;"`
+
 `psql -U sige -d postgres -c "DROP DATABASE IF EXISTS qgep_prod_copy;"`
 
 ### Archive
