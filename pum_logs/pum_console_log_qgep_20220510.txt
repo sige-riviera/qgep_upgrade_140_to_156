@@ -1,0 +1,144 @@
+...
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+COMMENT
+ALTER TABLE
+ALTER TABLE
+COMMENT
+CREATE FUNCTION
+psql:/home/sitadmin/sit/production/qgep_upgrade_140_to_156/datamodel/scripts/../13_import.sql:3: NOTICE:  table "manhole_quarantine" does not exist, skipping
+DROP TABLE
+CREATE TABLE
+ set_config
+------------
+ 2056
+(1 row)
+
+DO
+psql:/home/sitadmin/sit/production/qgep_upgrade_140_to_156/datamodel/scripts/../13_import.sql:196: NOTICE:  trigger "after_update_try_structure_update" for relation "qgep_import.manhole_quarantine" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+psql:/home/sitadmin/sit/production/qgep_upgrade_140_to_156/datamodel/scripts/../13_import.sql:207: NOTICE:  trigger "after_insert_try_structure_update" for relation "qgep_import.manhole_quarantine" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+psql:/home/sitadmin/sit/production/qgep_upgrade_140_to_156/datamodel/scripts/../13_import.sql:340: NOTICE:  trigger "after_update_try_inlet_update" for relation "qgep_import.manhole_quarantine" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+psql:/home/sitadmin/sit/production/qgep_upgrade_140_to_156/datamodel/scripts/../13_import.sql:351: NOTICE:  trigger "after_insert_try_inlet_update" for relation "qgep_import.manhole_quarantine" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+psql:/home/sitadmin/sit/production/qgep_upgrade_140_to_156/datamodel/scripts/../13_import.sql:359: NOTICE:  trigger "after_update_try_outlet_update" for relation "qgep_import.manhole_quarantine" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+psql:/home/sitadmin/sit/production/qgep_upgrade_140_to_156/datamodel/scripts/../13_import.sql:370: NOTICE:  trigger "after_insert_try_outlet_update" for relation "qgep_import.manhole_quarantine" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+psql:/home/sitadmin/sit/production/qgep_upgrade_140_to_156/datamodel/scripts/../13_import.sql:388: NOTICE:  trigger "after_mutation_delete_when_okay" for relation "qgep_import.manhole_quarantine" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+Set baseline...OK
+ set_config
+------------
+ 2056
+(1 row)
+
+DO
+psql:/home/sitadmin/sit/production/qgep_upgrade_140_to_156/datamodel/scripts/../14_geometry_functions.sql:34: NOTICE:  trigger "synchronize_level_with_altitude" for relation "qgep_od.wastewater_node" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+ set_config
+------------
+ 2056
+(1 row)
+
+DO
+psql:/home/sitadmin/sit/production/qgep_upgrade_140_to_156/datamodel/scripts/../14_geometry_functions.sql:76: NOTICE:  trigger "synchronize_level_with_altitude" for relation "qgep_od.cover" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+~/sit/production/qgep_upgrade_140_to_156
+~/sit/production/qgep_upgrade_140_to_156/datamodel ~/sit/production/qgep_upgrade_140_to_156
+Test and upgrade...Dump...OK
+Restore...ERROR
+b'pg_restore: WARNING:  column "upperevappattern" has type "unknown"\nDETAIL:  Proceeding with relation creation anyway.\npg_restore: WARNING:  column "stagedata" has type "unknown"\nDETAIL:  Proceeding with relation creation anyway.\npg_restore: WARNING:  column "snowpack" has type "unknown"\nDETAIL:  Proceeding with relation creation anyway.\npg_restore: [archiver (db)] Error while PROCESSING TOC:\npg_restore: [archiver (db)] Error from TOC entry 7066; 0 967081 MATERIALIZED VIEW DATA vw_network_segment sige\npg_restore: [archiver (db)] could not execute query: ERROR:  function st_curvetoline(public.geometry, integer) does not exist\nLINE 1: SELECT ST_CurveToLine($1, 32::integer)\n               ^\nHINT:  No function matches the given name and argument types. You might need to add explicit type casts.\nQUERY:  SELECT ST_CurveToLine($1, 32::integer)\nCONTEXT:  SQL function "st_curvetoline" during inlining\n    Command was: REFRESH MATERIALIZED VIEW qgep_od.vw_network_segment;\n\n\n\nWARNING: errors ignored on restore: 1\n'
+Upgrade...     Applying delta 1.4.1 swmm_catchment_areas... OK
+     Applying delta 1.5.0 fix_network_tracking_views... OK
+     Applying delta 1.5.0 labelling... OK
+     Applying delta 1.5.1 fix_network_tracking_views... OK
+     Applying delta 1.5.2 fix_network_tracking_views... OK
+     Applying delta 1.5.3 fix_symbology_function... OK
+     Applying delta 1.5.3 fix_vl_value_en_digital_video... OK
+     Applying delta 1.5.3 fix_ws_output_labels... OK
+     Applying delta 1.5.5 add_spatial_index_on_network_views... OK
+     Applying delta 1.5.5 fix_dictionary_od_table_datenlieferant... OK
+     Applying delta 1.5.5 fix_permissions_on_network_refresh_function... OK
+     Applying delta 1.5.5 symbology_for_nodes... OK
+     Applying delta 1.5.6 kek_model_update_2008_2019... OK
+     Applying post-all.py... OK
+OK
+Check...OK
+tables
+rules
+Apply deltas to pum_qgep_prod? [n]|y: y
+Upgrade...     Applying delta 1.4.1 swmm_catchment_areas... OK
+     Applying delta 1.5.0 fix_network_tracking_views... OK
+     Applying delta 1.5.0 labelling... OK
+     Applying delta 1.5.1 fix_network_tracking_views... OK
+     Applying delta 1.5.2 fix_network_tracking_views... OK
+     Applying delta 1.5.3 fix_symbology_function... OK
+     Applying delta 1.5.3 fix_vl_value_en_digital_video... OK
+     Applying delta 1.5.3 fix_ws_output_labels... OK
+     Applying delta 1.5.5 add_spatial_index_on_network_views... OK
+     Applying delta 1.5.5 fix_dictionary_od_table_datenlieferant... OK
+     Applying delta 1.5.5 fix_permissions_on_network_refresh_function... OK
+     Applying delta 1.5.5 symbology_for_nodes... OK
+     Applying delta 1.5.6 kek_model_update_2008_2019... OK
+     Applying post-all.py... OK
+OK
+OK
+~/sit/production/qgep_upgrade_140_to_156
+~/sit/production/qgep_upgrade_140_to_156/extension_qgep_sige ~/sit/production/qgep_upgrade_140_to_156
+CREATE VIEW
+ALTER TABLE
+CREATE RULE
+CREATE RULE
+CREATE RULE
+CREATE VIEW
+ALTER TABLE
+CREATE RULE
+CREATE RULE
+CREATE RULE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE RULE
+CREATE VIEW
+ALTER TABLE
+CREATE RULE
+CREATE VIEW
+ALTER TABLE
+~/sit/production/qgep_upgrade_140_to_156
+sitadmin@sit:~/sit/production/qgep_upgrade_140_to_156$
