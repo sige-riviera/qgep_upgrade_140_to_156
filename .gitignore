@@ -1,6 +1,6 @@
 /*.dump
 /pum_logs/pum_log_qgep_*.txt
-!/pum_logs/pum_log_qgep_*_upgrade.txt
+!/pum_logs/pum_log_qgep_*_upgrade_*.txt
 !/pum_logs/pum_console_log_qgep_*.txt
 /datamodel
 /extension_qgep_sige
