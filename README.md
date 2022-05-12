@@ -17,6 +17,9 @@ See [qwat_upgrade_133_to_137 repository](https://github.com/sige-riviera/qwat_up
 ### Download QGEP datamodel
 `git clone -b 1.5.6-1 git@github.com:QGEP/datamodel.git`
 
+### QGEP SIGE exetension
+`git@github.com:sige-riviera/extension_qgep_sige.git`
+
 ### Create a duplicate of production database to then avoid disconnecting users during upgrade tests
 `psql -d postgres -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'qgep_prod';"`
 
